@@ -4,21 +4,40 @@
 git_user_name=$(git config user.name)
 git_user_email=$(git config user.email)
 
-# Set the start date to January 1, 2022
-current_date="2023-01-01"
+friday="5"
+saturday="6"
+sunday="7"
+
+################################################
+
+# You can change these variables to change the start and end dates of the commits
+start_date="2022-01-01"
+end_date="2023-05-08"
+
+# You can choose to exclude certain days of the week from having commits. You can exclude up to 3 days.
+exclude_days=("$saturday" "$sunday")
+
+# Other examples
+# exclude_days=("$friday" "$saturday")
+# exclude_days=("$friday" "$saturday" "$sunday")
+
+################################################
 
 # Create the text file
-filename="file.txt"
+filename="commits.txt"
 touch "$filename"
 
+# Set the current date as "start date". This will change as we loop through each day of the year
+current_date="$start_date"
+
 # Loop through each day of the year
-while [ "$current_date" != "2023-05-08" ]; do
+while [ "$current_date" != "$end_date" ]; do
 
   # Get the day of the week (1-7, where 1 is Monday and 7 is Sunday)
   day_of_week=$(date -jf "%Y-%m-%d" "$current_date" +"%u")
 
   # Check if the day is not Saturday (6) or Sunday (7)
-  if [ "$day_of_week" != "6" ] && [ "$day_of_week" != "7" ]; then
+  if [ "$day_of_week" != "$exclude_days[0]" ] && [ "$day_of_week" != "$exclude_days[1]" && [ "$day_of_week" != "$exclude_days[2]" ]; then
     # Generate a random number between 1 and 100
     random_num=$((RANDOM % 100 + 1))
 

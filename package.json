@@ -1,20 +1,13 @@
 {
-  "name": "git-test",
+  "name": "github's greens",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "description": "This repository contains scripts to add the green commits to your Github profile. This will give you absolute control on the dates and number of commits while automating the process",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/David-L-R/git-test.git"
   },
-  "keywords": [],
-  "author": "",
+  "keywords": ["git", "git-profile", "interviews"],
+  "author": "David L. Rajcher",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/David-L-R/git-test/issues"
-  },
   "homepage": "https://github.com/David-L-R/git-test#readme"
 }

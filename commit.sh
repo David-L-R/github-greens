@@ -81,3 +81,5 @@ while [ "$current_date" != "$end_date" ]; do
 
 done
 git push origin main
+rm "$filename"
+echo -e "\033[32m\n########\nDone! Go to your Github profile and enjoy your greens!\n#########\033[0m"

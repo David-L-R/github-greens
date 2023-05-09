@@ -11,7 +11,10 @@ Follow my tutorial and let me know if it works:
    1. I made it possible toto exclude weeknds.
    2. The idea behind it is to allow you to exclude weekends to make it look more realistic.
    3. You can also choose not to exclude anything.
-4. Once the bash file is ready with the correct dates and days, run the file with the command `chmod +x commit.sh && ./commit.sh` (as long as you are inside the terminal of the project)
+4. Once the bash file is ready with the correct dates and days, run the file with the command that matches your OS. Make sure that the terminal points to the project root.
+   - MacOS - `chmod +x commit-macos.sh && ./commit-macos.sh`
+   - Windows - `chmod +x commit-windows.sh && ./commit-windows.sh`
+   - Linux - `chmod +x commit-linux.sh && ./commit-linux.sh`
 5. Then go to Github and refresh the repository, and going back to your main page, you should see the updated greens :)
 
 ## Possible Errors
@@ -31,5 +34,3 @@ git config --global user.email "your_email@example.com"
 git config user.name "Your Name"
 git config user.email "your_email@example.com"
 ```
-
-Make sure that your git

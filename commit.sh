@@ -11,7 +11,7 @@ sunday="7"
 ################################################
 
 # You can change these variables to change the start and end dates of the commits
-start_date="2022-01-01"
+start_date="2023-05-01"
 end_date="2023-05-08"
 
 # You can choose to exclude certain days of the week from having commits. You can exclude up to 3 days.
@@ -36,8 +36,8 @@ while [ "$current_date" != "$end_date" ]; do
   # Get the day of the week (1-7, where 1 is Monday and 7 is Sunday)
   day_of_week=$(date -jf "%Y-%m-%d" "$current_date" +"%u")
 
-  # Check if the day is not Saturday (6) or Sunday (7)
-  if [ "$day_of_week" != "$exclude_days[0]" ] && [ "$day_of_week" != "$exclude_days[1]" && [ "$day_of_week" != "$exclude_days[2]" ]; then
+  # Check if the day is not in the exclude_days array
+  if [ "$day_of_week" != "${exclude_days[0]}" ] && [ "$day_of_week" != "${exclude_days[1]}" ] && [ "$day_of_week" != "${exclude_days[2]}" ]; then
     # Generate a random number between 1 and 100
     random_num=$((RANDOM % 100 + 1))
 
@@ -81,5 +81,3 @@ while [ "$current_date" != "$end_date" ]; do
 
 done
 git push origin main
-
-

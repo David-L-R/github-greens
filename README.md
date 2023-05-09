@@ -1,30 +1,28 @@
-# Create Github's "Greens"
+# Create GitHub's "Greens"
 
-One thing that hiring managers often do, is to go into a Github profile of a candidate to get a notion of how much they program. A person that programs almost every day seems more organized, passionate and serious about their career.
-So how we can make it look like this even if we did not commit every day?
+Hiring managers often visit a candidate's GitHub profile to gauge their programming habits. Candidates who program regularly appear more organized, passionate, and dedicated to their career. How can you achieve this appearance even if you don't commit daily?
 
-Follow my tutorial and let me know if it works:
+Follow this tutorial and share your feedback:
 
-1. Fork this repository
+1. Fork the repository
 2. Clone it
-3. Change the start and end dates (`start_date` and `end_date` variables)
-   1. I made it possible toto exclude weeknds.
-   2. The idea behind it is to allow you to exclude weekends to make it look more realistic.
-   3. You can also choose not to exclude anything.
-4. Once the bash file is ready with the correct dates and days, run the file with the command that matches your OS. Make sure that the terminal points to the project root.
-   - MacOS - `chmod +x commit-macos.sh && ./commit-macos.sh`
-   - Windows - `chmod +x commit-windows.sh && ./commit-windows.sh`
-   - Linux - `chmod +x commit-linux.sh && ./commit-linux.sh`
-5. Then go to Github and refresh the repository, and going back to your main page, you should see the updated greens :)
+3. Modify variables
+   - Start and end dates (`start_date` and `end_date`)
+   - Exclude weekends (optional) for a more realistic look
+   - Alternatively, choose not to exclude any days
+4. With the correct dates and days in the bash file, run the matching command for your OS in the terminal at the project root:
+   - MacOS - chmod +x commit-macos.sh && ./commit-macos.sh
+   - Windows - chmod +x commit-windows.sh && ./commit-windows.sh
+   - Linux - chmod +x commit-linux.sh && ./commit-linux.sh
+5. Refresh the GitHub repository and return to your main page to view the updated "greens" :)
 
 ## Possible Errors
 
-### fatal: empty ident name/email not allowed
-
-If you don't have your git name and git email defined, you can do it either globally or locally (for this repository):
+- `fatal: empty ident name/email not allowed`
+  - If your git name and email aren't defined, configure them either globally or locally (for this repository):
 
 ```bash
-# GLOBALY
+# GLOBALLY
 git config --global user.name "Your Name"
 git config --global user.email "your_email@example.com"
 ```

@@ -1,3 +1,5 @@
+<img width="773" alt="greens" src="https://github.com/David-L-R/git/assets/31222514/08991eea-9052-467c-a85d-79a585b330b0">
+
 # Create GitHub's "Greens"
 
 Hiring managers often visit a candidate's GitHub profile to gauge their programming habits. Candidates who program regularly appear more organized, passionate, and dedicated to their career. How can you achieve this appearance even if you don't commit daily?

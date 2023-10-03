@@ -6,17 +6,18 @@ Hiring managers often visit a candidate's GitHub profile to gauge their programm
 
 Follow this tutorial and share your feedback:
 
-1. Fork the repository
-2. Clone it
-3. Modify variables
+1. Clone it
+2. Create a new repository
+3. Remove .git, run `git init`, and push it to your new repository
+4. Modify variables
    - Start and end dates (`start_date` and `end_date`)
    - Exclude weekends (optional) for a more realistic look
    - Alternatively, choose not to exclude any days
-4. With the correct dates and days in the bash file, run the matching command for your OS in the terminal at the project root:
+5. With the correct dates and days in the bash file, run the matching command for your OS in the terminal at the project root:
    - MacOS - chmod +x commit-macos.sh && ./commit-macos.sh
    - Windows - chmod +x commit-windows.sh && ./commit-windows.sh
    - Linux - chmod +x commit-linux.sh && ./commit-linux.sh
-5. Refresh the GitHub repository and return to your main page to view the updated "greens" :)
+6. Refresh the GitHub repository and return to your main page to view the updated "greens" :)
 
 ## Possible Errors
 

@@ -11,8 +11,8 @@ sunday="7"
 ################################################
 
 # You can change these variables to change the start and end dates of the commits
-start_date="2023-06-01"
-end_date="2023-08-16"
+start_date="2024-01-01"
+end_date="2024-06-06"
 
 # You can choose to exclude certain days of the week from having commits. You can exclude up to 3 days.
 exclude_days=("$saturday" "$sunday")
@@ -42,11 +42,11 @@ while [ "$current_date" != "$end_date" ]; do
     random_num=$((RANDOM % 100 + 1))
 
     # Set num_changes based on the probability distribution
-    if [ "$random_num" -le 30 ]; then
+    if [ "$random_num" -le 10 ]; then
       num_changes=0
-    elif [ "$random_num" -le 55 ]; then
+    elif [ "$random_num" -le 40 ]; then
       num_changes=1
-    elif [ "$random_num" -le 75 ]; then
+    elif [ "$random_num" -le 80 ]; then
       num_changes=2
     elif [ "$random_num" -le 90 ]; then
       num_changes=3

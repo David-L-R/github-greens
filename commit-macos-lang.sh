@@ -58,7 +58,7 @@ while [ "$current_date" != "$end_date" ]; do
     fi
 
     random_lang_index=$((RANDOM % ${#languages[@]}))
-  language=${languages[$random_lang_index]}
+    language=${languages[$random_lang_index]}
 
     if [ ! -d "$language" ]; then
       mkdir "$language"
@@ -70,7 +70,21 @@ while [ "$current_date" != "$end_date" ]; do
       filename="$current_date.$language"
       touch "$language/$filename"
 
-      echo "a" >> "$language/$filename"
+      # Add some simple content based on the language
+      case "$language" in
+        "java")
+          echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } }' > "$language/$filename"
+          ;;
+        "py")
+          echo 'print("Hello, World!")' > "$language/$filename"
+          ;;
+        "ts")
+          echo 'console.log("Hello, World!");' > "$language/$filename"
+          ;;
+        "js")
+          echo 'console.log("Hello, World!");' > "$language/$filename"
+          ;;
+      esac
 
       # Add the file to Git
       git add "$language/$filename"
@@ -93,6 +107,7 @@ while [ "$current_date" != "$end_date" ]; do
   current_date=$(date -jf "%Y-%m-%d" -v+1d "$current_date" +"%Y-%m-%d")
 
 done
+
 # git push origin main
 # rm "$filename"
 echo -e "\033[32m\n########\nDone! Go to your Github profile and enjoy your greens!\n#########\033[0m"

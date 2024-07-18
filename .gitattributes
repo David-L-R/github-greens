@@ -1,0 +1,5 @@
+# Override the language for specific file types
+*.java linguist-language=Java
+*.py linguist-language=Python
+*.ts linguist-language=TypeScript
+*.js linguist-language=JavaScript

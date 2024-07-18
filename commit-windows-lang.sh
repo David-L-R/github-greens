@@ -11,28 +11,24 @@ sunday="7"
 ################################################
 
 # You can change these variables to change the start and end dates of the commits
-start_date="2024-07-17"
-end_date="2024-07-18"
+start_date="2024-01-01"
+end_date="2024-06-06"
 
 # You can choose to exclude certain days of the week from having commits. You can exclude up to 3 days.
-exclude_days=("$saturday" "$friday")
+exclude_days=("$saturday" "$sunday")
 
 java="java"
 python="py"
 typescript="ts"
+javascript="js"
 
-
-languages=("$java")
+languages=("$java" "$python" "$typescript" "$javascript")
 
 # Other examples
 # exclude_days=("$friday" "$saturday")
 # exclude_days=("$friday" "$saturday" "$sunday")
 
 ################################################
-
-# Create the text file
-# filename="commits.txt"
-
 
 # Set the current date as "start date". This will change as we loop through each day of the year
 current_date="$start_date"
@@ -41,7 +37,7 @@ current_date="$start_date"
 while [ "$current_date" != "$end_date" ]; do
 
   # Get the day of the week (1-7, where 1 is Monday and 7 is Sunday)
-  day_of_week=$(date -d "$current_date" +"%u")
+  day_of_week=$(date -jf "%Y-%m-%d" "$current_date" +"%u")
 
   # Check if the day is not in the exclude_days array
   if [ "$day_of_week" != "${exclude_days[0]}" ] && [ "$day_of_week" != "${exclude_days[1]}" ] && [ "$day_of_week" != "${exclude_days[2]}" ]; then
@@ -49,11 +45,11 @@ while [ "$current_date" != "$end_date" ]; do
     random_num=$((RANDOM % 100 + 1))
 
     # Set num_changes based on the probability distribution
-    if [ "$random_num" -le 30 ]; then
+    if [ "$random_num" -le 10 ]; then
       num_changes=0
-    elif [ "$random_num" -le 55 ]; then
+    elif [ "$random_num" -le 40 ]; then
       num_changes=1
-    elif [ "$random_num" -le 75 ]; then
+    elif [ "$random_num" -le 80 ]; then
       num_changes=2
     elif [ "$random_num" -le 90 ]; then
       num_changes=3
@@ -61,16 +57,37 @@ while [ "$current_date" != "$end_date" ]; do
       num_changes=4
     fi
 
+    random_lang_index=$((RANDOM % ${#languages[@]}))
+    language=${languages[$random_lang_index]}
+
+    if [ ! -d "$language" ]; then
+      mkdir "$language"
+    fi
+
     # Make the specified number of changes
     for ((i = 1; i <= num_changes; i++)); do
-      filename="$current_date.java"
-      touch "$filename"
-  
-      # # Add a character to the text file
-      # echo "a" >> "$filename"
+      # Add a character to the text file
+      filename="$current_date.$language"
+      touch "$language/$filename"
+
+      # Add some simple content based on the language
+      case "$language" in
+        "java")
+          echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } }' > "$language/$filename"
+          ;;
+        "py")
+          echo 'print("Hello, World!")' > "$language/$filename"
+          ;;
+        "ts")
+          echo 'console.log("Hello, World!");' > "$language/$filename"
+          ;;
+        "js")
+          echo 'console.log("Hello, World!");' > "$language/$filename"
+          ;;
+      esac
 
       # Add the file to Git
-      git add "$filename"
+      git add "$language/$filename"
 
       # Set the commit date with the correct format
       commit_date="${current_date}T00:00:00"
@@ -87,9 +104,9 @@ while [ "$current_date" != "$end_date" ]; do
   fi
 
   # Increment the date by one day
-  current_date=$(date -d "$current_date + 1 day" +"%Y-%m-%d")
+  current_date=$(date -jf "%Y-%m-%d" -v+1d "$current_date" +"%Y-%m-%d")
 
 done
-git push origin main
-# rm "$filename"
+
+# git push origin main
 echo -e "\033[32m\n########\nDone! Go to your Github profile and enjoy your greens!\n#########\033[0m"

@@ -70,19 +70,23 @@ while [ "$current_date" != "$end_date" ]; do
       filename="$current_date.$language"
       touch "$language/$filename"
 
-      # Add some simple content based on the language
+      # Add more substantial content based on the language
       case "$language" in
         "java")
           echo 'public class Main { public static void main(String[] args) { System.out.println("Hello, World!"); } }' > "$language/$filename"
+          echo 'class Helper { void help() { System.out.println("Helping..."); } }' >> "$language/$filename"
           ;;
         "py")
           echo 'print("Hello, World!")' > "$language/$filename"
+          echo 'def helper(): print("Helping...")' >> "$language/$filename"
           ;;
         "ts")
           echo 'console.log("Hello, World!");' > "$language/$filename"
+          echo 'function helper() { console.log("Helping..."); }' >> "$language/$filename"
           ;;
         "js")
           echo 'console.log("Hello, World!");' > "$language/$filename"
+          echo 'function helper() { console.log("Helping..."); }' >> "$language/$filename"
           ;;
       esac
 
@@ -109,5 +113,4 @@ while [ "$current_date" != "$end_date" ]; do
 done
 
 # git push origin main
-# rm "$filename"
 echo -e "\033[32m\n########\nDone! Go to your Github profile and enjoy your greens!\n#########\033[0m"

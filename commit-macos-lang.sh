@@ -18,8 +18,11 @@ end_date="2024-06-06"
 exclude_days=("$saturday" "$sunday")
 
 java="java"
+python="py"
+typescript="ts"
+javascript="js"
 
-languages=("$java")
+languages=("$java" "$python" "$typescript" "$javascript")
 
 # Other examples
 # exclude_days=("$friday" "$saturday")
@@ -54,14 +57,23 @@ while [ "$current_date" != "$end_date" ]; do
       num_changes=4
     fi
 
+    random_lang_index=$((RANDOM % ${#languages[@]}))
+  language=${languages[$random_lang_index]}
+
+    if [ ! -d "$language" ]; then
+      mkdir "$language"
+    fi
+
     # Make the specified number of changes
     for ((i = 1; i <= num_changes; i++)); do
       # Add a character to the text file
-      filename="$current_date.java"
-      touch "$filename"
+      filename="$current_date.$language"
+      touch "$language/$filename"
+
+      echo "a" >> "$language/$filename"
 
       # Add the file to Git
-      git add "$filename"
+      git add "$language/$filename"
 
       # Set the commit date with the correct format
       commit_date="${current_date}T00:00:00"
@@ -81,6 +93,6 @@ while [ "$current_date" != "$end_date" ]; do
   current_date=$(date -jf "%Y-%m-%d" -v+1d "$current_date" +"%Y-%m-%d")
 
 done
-git push origin main
+# git push origin main
 # rm "$filename"
 echo -e "\033[32m\n########\nDone! Go to your Github profile and enjoy your greens!\n#########\033[0m"

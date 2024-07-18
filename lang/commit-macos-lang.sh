@@ -67,7 +67,7 @@ while [ "$current_date" != "$end_date" ]; do
     # Make the specified number of changes
     for ((i = 1; i <= num_changes; i++)); do
       # Add a character to the text file
-      filename="$current_date.$language"
+      filename="$current_date-$i.$language"
       touch "$language/$filename"
 
       # Add more substantial content based on the language
